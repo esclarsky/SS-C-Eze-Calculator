@@ -4,9 +4,9 @@ import FormattedEquation from "../Components/FormattedEquation";
 // TODO: style history container appropriately
 
 function HistoryContainer(props) {
-  const {equationHistory, onHistoryClick} = props;
+  const {history, onHistoryClick} = props;
 
-  const equations = equationHistory.map((equation, idx) => {
+  const equations = history.map((equation, idx) => {
     return (
       <FormattedEquation key={idx} value={equation} onButtonClick={onHistoryClick}/>
     );
@@ -16,6 +16,7 @@ function HistoryContainer(props) {
 
   return (
     <div className="HistoryContainer">
+      <header id='historyHeader'>History</header>
         {equations}
     </div>
   );

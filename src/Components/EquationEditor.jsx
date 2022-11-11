@@ -14,7 +14,9 @@ function EquationEditor(props) {
 
   return (
     <div className="EquationEditor">
-      <input value = {equation}/>
+      <header className='equationInput' evaluated = {true}/>
+        {equation}
+      <header/>
     </div>
   );
 }
