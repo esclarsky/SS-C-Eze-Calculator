@@ -1,7 +1,7 @@
 function FunctionButton() {
   return (
     <div className="FunctionButton">
-        hello
+        Function Button
     </div>
   );
 }

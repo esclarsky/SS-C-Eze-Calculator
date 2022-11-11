@@ -1,7 +1,7 @@
 function ValueButton() {
   return (
     <div className="ValueButton">
-        1rwq
+        Value Button
     </div>
   );
 }

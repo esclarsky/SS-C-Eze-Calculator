@@ -1,12 +1,14 @@
-import FunctionButton from "../Components/FunctionButton";
-import ValueButton from "../Components/ValueButton";
+import ButtonContainer from "./ButtonContainer";
+import EquationContainer from "./EquationContainer";
+import EquationHistory from "./EquationHistory";
 
 
 function Calculator() {
   return (
-    <div className="App">
-      <ValueButton/>
-      <FunctionButton/>
+    <div className="Calculator">
+      <EquationContainer/>
+      <ButtonContainer/>
+      <EquationHistory/>
     </div>
   );
 }
