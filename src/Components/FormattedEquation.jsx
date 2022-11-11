@@ -1,10 +1,13 @@
 import React from 'react'
+import {Equation} from 'react-equation'
 
-function FormattedEquation() {
+function FormattedEquation({value, onButtonClick}) {
+
+
   return (
-    <div className="FormattedEquation">
-        Formatted Equation
-    </div>
+    <button className="FormattedEquation"onClick={()=>onButtonClick(value)}>
+      <Equation value = {value} />
+    </button>
   );
 }
 
