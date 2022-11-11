@@ -1,8 +1,11 @@
-function FunctionButton() {
+import React from 'react'
+
+function FunctionButton(props) {
+  const {value} = props
   return (
-    <div className="FunctionButton">
-        Function Button
-    </div>
+    <button className="FunctionButton">
+        {value}
+    </button>
   );
 }
 

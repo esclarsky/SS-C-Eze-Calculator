@@ -1,13 +1,21 @@
-import EqualsButton from "../Components/EqualsButton";
-import FunctionButton from "../Components/FunctionButton";
-import ValueButton from "../Components/ValueButton";
+import React from 'react'
+import Button from "../Components/FunctionButton";
 
-function ButtonContainer() {
+
+
+function ButtonContainer(props) {
+
+  const {buttonValues} = props
+  const buttons = buttonValues.map((btn, idx) => {
+    return (
+      <Button key={idx} value={btn}/>
+    );
+  });
+  
+
   return (
     <div className="ButtonContainer">
-        <ValueButton/>
-        <FunctionButton/>
-        <EqualsButton/>
+      {buttons}
     </div>
   );
 }

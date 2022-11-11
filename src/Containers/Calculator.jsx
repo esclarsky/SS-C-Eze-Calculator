@@ -1,14 +1,13 @@
-import ButtonContainer from "./ButtonContainer";
+import React from 'react'
 import EquationContainer from "./EquationContainer";
-import EquationHistory from "./EquationHistory";
+import HistoryContainer from "./HistoryContainer";
 
 
 function Calculator() {
   return (
     <div className="Calculator">
       <EquationContainer/>
-      <ButtonContainer/>
-      <EquationHistory/>
+      <HistoryContainer/>
     </div>
   );
 }

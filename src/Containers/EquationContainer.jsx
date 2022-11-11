@@ -1,11 +1,20 @@
+import React from 'react'
 import EquationEditor from "../Components/EquationEditor";
-import EquationResult from "../Components/EquationResult";
+import ButtonContainer from './ButtonContainer';
+
+const buttonValues = ['rand', 'mod', 'clr', '←',
+  '^','(',')','*',
+  '7', '8', '9', '/',
+  '4', '5', '6', '+',
+  '1', '2', '3', '-',
+  '0', '.', '='
+]
 
 function EquationContainer() {
   return (
     <div className="EquationContainer">
         <EquationEditor/>
-        <EquationResult/>
+        <ButtonContainer buttonValues={buttonValues}/>
     </div>
   );
 }
