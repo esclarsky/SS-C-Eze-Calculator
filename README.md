@@ -1,3 +1,7 @@
+# Calculator app for SS&C Eze Software assessment.
+
+Note I didn't dedicate too much time to the ReadMe, all the sections below are templated from create-react-app
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
