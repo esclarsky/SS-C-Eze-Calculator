@@ -4,6 +4,7 @@ import {parse} from 'equation-parser'
 import EquationEditor from '../Components/EquationEditor';
 import ButtonContainer from './ButtonContainer';
 import HistoryContainer from "./HistoryContainer";
+import { useEffect } from 'react';
 
 // TODO: validate parentheses before evaluating equation
 
@@ -24,17 +25,34 @@ const operators = {
   '^': true,
 }
 
-// Array to store input history. If this were a real app, this would be stored either in a database or in local storage
 
 
 function Calculator() {
 
   const [currentEquation, setCurrentEquation] = useState('0')
+  // Evaluated state determines color of equation and what next input button may do 
   const [evaluated, setEvaluated] = useState(true);
+  // Array to store input history. If this were a real app, this would be stored either in a database or in local storage
   const [history, setHistory] = useState([]);
+  //
+  const [error, setError] = useState(null);
+
 
   // Click handlers for buttons that aren't directly related to building the equation
   const equalsClickHandler = () => {
+    let parenthesesCount = 0;
+    for (let i=0; i<currentEquation.length;i++){
+      if (currentEquation[i]==='('){
+        parenthesesCount++
+      }
+      if (currentEquation[i]===')'){
+        parenthesesCount--
+      }
+    }
+    if (parenthesesCount!=0){
+      setError(`${parenthesesCount}`)
+    }
+ 
     if (currentEquation.length===0){return}
     setHistory([currentEquation,...history]);
     setEvaluated(true);
@@ -47,6 +65,7 @@ function Calculator() {
   // Click handler for all buttons
   // Switch cases address the special cases of the buttons handled above
   const onButtonClick = (value) => {
+    setError(null)
     switch (value) {
       case '=':
         return equalsClickHandler();
@@ -57,7 +76,12 @@ function Calculator() {
       case 'rand':
         return randClickHandler();
       case '+-':
-        return setCurrentEquation(`${currentEquation * -1}`)
+        if (currentEquation.charAt(0)==='-'){
+          setEvaluated(false)
+          return setCurrentEquation(currentEquation.slice(1))
+        }
+        setEvaluated(false)
+        return setCurrentEquation(`-${currentEquation}`)
       // Special case for decimal points. Need to make sure there isn't already a decimal point in the current number 
       case '.':
         if (currentEquation.length===0){return}
@@ -115,11 +139,15 @@ function Calculator() {
   }
 
   const onHistoryClick = (value) => {
-    return setCurrentEquation(value)
+    setError(null);
+    setEvaluated(false);
+    return setCurrentEquation(value);
   }
+
   return (
     <div className="Calculator">
-      <EquationEditor currentEquation={currentEquation} />
+      <EquationEditor currentEquation={currentEquation} evaluated={evaluated} />
+      {error? (<p style = {{color:'red'}} className="errorMsg">{error}</p>) : null}
       <ButtonContainer buttonValues={buttonValues} onButtonClick={onButtonClick}/>
       <HistoryContainer history={history} onHistoryClick={onHistoryClick}/>
     </div>
