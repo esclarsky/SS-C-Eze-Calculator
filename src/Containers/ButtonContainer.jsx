@@ -1,14 +1,13 @@
 import React from 'react'
-import Button from "../Components/FunctionButton";
+import FunctionButton from "../Components/FunctionButton";
 
+// This container holds all of the default buttons for the calculator. It receives button values and the onButtonClick function from the Calculator
+// and passes them respectively to the individual FunctionButton components.
+function ButtonContainer({buttonValues, onButtonClick}) {
 
-
-function ButtonContainer(props) {
-
-  const {buttonValues, onButtonClick} = props
   const buttons = buttonValues.map((btn, idx) => {
     return (
-      <Button key={idx} value={btn} onButtonClick={onButtonClick}/>
+      <FunctionButton key={idx} value={btn} onButtonClick={onButtonClick}/>
     );
   });
   

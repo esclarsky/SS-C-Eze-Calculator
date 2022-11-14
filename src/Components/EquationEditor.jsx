@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
 
-function EquationEditor(props) {
+// Equation display component. It receives the current equation from the Calculator and displays it in the equation editor.
+// If the equation is evaluated, it will display the result in green.
 
-  const {currentEquation, evaluated} = props;
+function EquationEditor({currentEquation, evaluated} ) {
+
   const [equation, setEquation ] = useState(currentEquation);
   const [color, setColor] = useState('black');
-
-  // TODO: allow valid inputs from keyboard
 
   useEffect(() => {
     setEquation(currentEquation);
@@ -14,8 +14,8 @@ function EquationEditor(props) {
 
   useEffect(() => {
     console.log(color)
-    if (evaluated) {return setColor('green')}
-    setColor('black')
+    if (evaluated) {return setColor('#008a0b')}
+    setColor('white')
   }, [evaluated]);
 
   return (

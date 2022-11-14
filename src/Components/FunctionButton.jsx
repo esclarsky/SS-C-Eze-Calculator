@@ -1,12 +1,11 @@
 import React from 'react'
 
-function FunctionButton(props) {
-  
-  const {value, onButtonClick} = props
-  
+// Stateless functional component to  handle the display and function of the calculator's buttons.
 
+function FunctionButton({value, onButtonClick}) {
+  
   return (
-    <button className="FunctionButton" onClick={()=>onButtonClick(value)}>
+    <button className="FunctionButton" onClick={()=>onButtonClick(value)} value={value}>
         {value}
     </button>
   );
